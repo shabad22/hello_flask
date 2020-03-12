@@ -18,10 +18,9 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configur
 # Routing for your application.
 ###
 
-@app.route('/')
+@app.route("/")
 def home():
-    """Render website's home page."""
-    return render_template('home.html')
+    return "Hello, Flask!"
 
 
 @app.route('/about/')
