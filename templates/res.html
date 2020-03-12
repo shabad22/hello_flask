@@ -1,0 +1,217 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <title>Comparable Corpus En-Pa</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        /* body {
+            background-color: #f5f5f5;
+            color: #777;
+            font-family: "Roboto", arial, sans-serif;
+            font-size: 16px;
+            overflow-x: hidden;
+        } */
+        
+        div {
+            background-color: #f5f5f5;
+            color: #777;
+            font-family: "Roboto", arial, sans-serif;
+            font-size: 16px;
+        }
+        
+        body {
+            background-color: whitesmoke;
+            color: #777;
+            /* font-family: 'Roboto', arial, sans-serif; */
+            font-size: 16px;
+            }
+        
+        header {
+            height: 14%;
+            width: 100%;
+            background-color: white;
+            /* align-items: center; */
+            margin: -10px;
+        }
+        
+        .logo {
+            height: 50%;
+            width: 4%;
+            background-color: white;
+            display: inline-block;
+            float: left;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        
+        .title {
+            width: auto;
+            height: 60%;
+            float: left;
+            margin-top: 8px;
+            margin-left: 8px;
+            padding-left: 4px;
+            text-decoration: #777;
+            background-color: white;
+            color: #5f6368;
+            display: inline-block;
+            font-family: Roboto, RobotoDraft, Arial, sans-serif;
+            font-size: 22px;
+            line-height: 24px;
+            padding-top: 18px;
+            position: relative;
+            /* top: -1.5px; */
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0.5px 0.5px #5f6368;
+        }
+        
+        .gap {
+            float: right;
+            height: 50%;
+            width: auto;
+            display: inline-block;
+            background-color: white;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+        
+        .text_doc {
+            height: 8%;
+            width: 100%;
+            padding: 5px;
+        }
+        
+        button {
+            background-color: white;
+            color: cornflowerblue;
+            height: 35px;
+            width: 100px;
+            font-size: 14;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-top: 7px;
+            align-self: center;
+            border: 5cm;
+            border-color: black;
+            border-radius: 2px;
+            /* border-style: solid; */
+        }
+        
+        .areas {
+            width: 100%;
+            /* margin-top: 8px; */
+            /* margin-left: -2px;
+            margin-right: -4px; */
+            /* padding: 5px; */
+            /* border: 1cm; */
+            background-color: white;
+            border-color: black;
+            margin-top: 8px;
+        }
+        
+        textarea {
+            background-color: white;
+            width: 100%;
+            /* opacity: 0.6; */
+            font-size: 20px;
+            /* padding: 10px; */
+            /* margin-left: -12px; */
+            /* margin-right: -20px; */
+            <!-- overflow: auto hidden; -->
+            text-align: left;
+        }
+        
+        .output {
+            height: 55%;
+            background-color: white;
+            box-shadow: 5px 1px 4px 5px rgb(228, 225, 225);
+            margin-left: -8px;
+            margin-right: -6px;
+        }
+        
+        .labels {
+            height: 50%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            margin: 20px;
+            padding: 5px;
+            background-color: white;
+            /* align-self: center;
+            align-items: center;
+            text-align: center; */
+        }
+        
+        .out_label {
+            height: 20%;
+            /* display: inline-block; */
+            width: 50%;
+            color: mediumblue;
+            /* text-align: center; */
+            /* margin-left: 20px; */
+            margin-top: 10px;
+            background-color: white;
+        }
+        
+        .out_area {
+            background-color: white;
+        }
+        
+        #back {
+            display: inline-block;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="head">
+        <div class="logo">
+            <!-- LOGO -->
+        </div>
+        <div class="title">
+            Tool for Extracting Parallel Phrases from English-Punjabi Comparable Corpus
+        </div>
+        <div class="gap">
+            &nbsp
+        </div>
+    </header>
+    <form action="/" method="GET">
+        <div class="text_doc">
+            <button type="button" class="btn_text ">Text</button>
+            <button type="button" id="btn_doc" class="btn_doc">Document</button>
+            <!-- <div class="col text-center"> -->
+            <button type="submit" id="back" class="btn btn-primary">GO BACK</button>
+
+        </div>
+
+        <div class="output">
+            <div class="labels">
+                <div class="out_label">
+                    <label for="comment" class="-bg-success">English-Punjabi Text</label>
+                </div>
+
+                <div class="areas">
+                    <div class="out_area">
+                        <textarea class="form-control" rows="10" id="comment" placeholder="AlignedEnglish-Punjabi Text" readonly name="eng_punjText">{{Eng_PunjOUTPUT}}</textarea >
+         
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+           
+        </div>
+
+    </form>
+</body>
+
+</html>

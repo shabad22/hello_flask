@@ -1,0 +1,248 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <title>Comparable Corpus En-Pa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            background-color: whitesmoke;
+            color: #777;
+            /* font-family: 'Roboto', arial, sans-serif; */
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        
+        header {
+            height: 12%;
+            width: 100%;
+            background-color: white;
+            /* align-items: center; */
+            margin: -10px;
+        }
+        
+        .logo {
+            height: 50%;
+            width: 4%;
+            background-color: white;
+            display: inline-block;
+            float: left;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        
+        .title {
+            width: auto;
+            height: 60%;
+            float: left;
+            margin-top: 8px;
+            margin-left: 8px;
+            padding-left: 4px;
+            text-decoration: #777;
+            background-color: white;
+            color: #5f6368;
+            display: inline-block;
+            font-family: Roboto, RobotoDraft, Arial, sans-serif;
+            font-size: 22px;
+            line-height: 24px;
+            padding-top: 18px;
+            position: relative;
+            /* top: -1.5px; */
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0.5px 0.5px #5f6368;
+        }
+        
+        .gap {
+            float: right;
+            height: 50%;
+            width: auto;
+            display: inline-block;
+            background-color: white;
+            margin-top: 8px;
+            margin-left: 8px;
+        }
+        
+        .text_doc {
+            height: 10%;
+            width: 100%;
+            padding: 5px;
+        }
+        
+        button {
+            background-color: white;
+            color: cornflowerblue;
+            height: 35px;
+            width: 100px;
+            font-size: 14;
+            font-weight: bold;
+            margin-right: 10px;
+            margin-top: 15px;
+            align-self: center;
+            border: 5cm;
+            border-color: black;
+            border-radius: 2px;
+            /* border-style: solid; */
+        }
+        
+        .input {
+            height: 55%;
+            background-color: white;
+            box-shadow: 5px 1px 4px 5px rgb(228, 225, 225);
+            margin-left: -8px;
+            margin-right: -6px;
+        }
+        
+        .labels {
+            height: 50%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 16px;
+            margin: 20px;
+            padding: 5px;
+            align-self: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .eng_label {
+            height: 20%;
+            display: inline-block;
+            width: 50%;
+            color: mediumblue;
+            text-align: center;
+            margin-top: 10px;
+            background-color: white;
+        }
+        
+        .pun_label {
+            height: 20%;
+            margin-top: 10px;
+            float: right;
+            text-align: center;
+            display: inline-block;
+            width: 50%;
+            color: mediumblue;
+            background-color: white;
+            margin-left: -6px;
+        }
+        
+        .areas {
+            width: 100%;
+            /* margin-top: 8px; */
+            /* margin-left: -2px;
+            margin-right: -4px; */
+            /* padding: 5px; */
+            /* border: 1cm; */
+            border-color: black;
+            margin-top: 8px;
+        }
+        
+        textarea {
+            width: 100%;
+            opacity: 0.6;
+            font-size: 20px;
+            padding: 10px;
+            margin-left: -12px;
+            margin-right: -5px;
+            resize: none;
+        }
+        
+        .eng_area {
+            width: 51%;
+            float: left;
+            display: inline-block;
+            margin-left: -2px;
+        }
+        
+        .pun_area {
+            width: 51%;
+            float: right;
+            display: inline-block;
+            margin-left: -12px;
+            margin-right: -20px;
+        }
+        
+        #reset {
+            float: right;
+        }
+        
+        #submit {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="head">
+        <div class="logo">
+            <!-- LOGO -->
+        </div>
+        <div class="title">
+            Tool for Extracting Parallel Phrases from English-Punjabi Comparable Corpus
+        </div>
+        <div class="gap">
+            &nbsp
+        </div>
+    </header>
+    <!-- <hr width="100%"> -->
+    <form action="/" method="POST">
+        <div class="text_doc">
+            <button type="button" class="btn_text ">Text</button>
+            <button type="button" id="btn_doc" class="btn_doc">Document</button>
+
+            <button type="submit" id="submit" class="btn btn-primary" onclick="myFunction()">Submit</button>
+
+            <button id="reset" type="reset" class="btn btn-danger">Reset</button>
+        </div>
+        <div class="input">
+            <div class="labels">
+                <div class="eng_label">
+                    <label for="comment" class="-bg-warning">English Text:{{EngLineCount}}</label><br>
+                </div>
+                <div class="pun_label">
+                    <label for="comment" class="-bg-info">Punjabi Text:{{PunjLineCount}}</label>
+                </div>
+                <div class="areas">
+                    <div class="eng_area">
+                        <textarea class="form-control" rows="10" id="comment" placeholder="Input English Text" required name="engText">{{EngOUTPUT}}</textarea>
+
+                    </div>
+                    <div class="pun_area">
+                        <textarea class="form-control" rows="10" id="comment" placeholder="Input Punjabi Text" required name="punjText">{{PunjOUTPUT}}</textarea>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+        </div>
+    </form>
+    <script>
+        $("#reset").click(function() {
+            $.ajax({
+                url: '/clear',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.result) {
+                        window.location.href = '/';
+                    } else {
+                        window.location.href = '/';
+                    }
+                }
+            });
+        });
+
+        function myFunction() {
+            alert("Please Do not close the Browser.. wait for results");
+        }
+    </script>
+</body>
+
+</html>
